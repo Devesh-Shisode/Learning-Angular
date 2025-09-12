@@ -1,0 +1,8 @@
+{
+  "menu": [
+    { "label": "Dashboard", "path": "dashboard", "component": "DashboardComponent" },
+    { "label": "Users", "path": "users", "component": "RandomuserComponent" },
+    { "label": "Settings", "path": "settings", "component": "SettingComponent" },
+    { "label": "Profile", "path": "profile", "component": "UserProfileComponent" }
+  ]
+}

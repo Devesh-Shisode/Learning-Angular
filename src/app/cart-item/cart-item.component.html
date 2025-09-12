@@ -1,0 +1,19 @@
+ <div *ngIf="product"  >
+  <div><p [appHover]="'blue'" [appHighlight]="'yellow'" style="width: 200px;">{{product.name}} - ${{product.price}}</p></div>
+ <button (click)="onRemove()">Remove</button>
+</div>  
+
+<button (click)="onNotify()">Click me</button>
+
+<button (click)="increment()">Increment</button>
+<p>Count: {{ count }}</p>
+
+
+    <div class="card">
+      <h3>{{ name }}</h3>
+      <p>Email: {{ email }}</p>
+      <p>Role: {{ role }}</p>
+    </div>
+
+   
+

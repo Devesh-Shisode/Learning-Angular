@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <h2 class="text-center">Random Users</h2>
+
+  <div class="table-container">
+    <table class="table table-bordered table-striped">
+      <thead class="table-header">
+        <tr>
+          <th>Picture</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Gender</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of user; trackBy: trackByUuid">
+          <td>
+            <img [src]="u.picture.thumbnail" class="rounded" alt="user" />
+          </td>
+          <td>{{ u.name.title }} {{ u.name.first }} {{ u.name.last }}</td>
+          <td>{{ u.email }}</td>
+          <td>{{ u.gender }}</td>
+          <td>{{ u.location.city }}, {{ u.location.country }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

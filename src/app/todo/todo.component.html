@@ -1,0 +1,71 @@
+ <div class="container mt-4" >
+    <button routerLink="/todo/add-todo" class="btn btn-primary mb-3">Add Todo</button>
+    <!-- <div class="input-group mb-3">
+        <input type="text"
+        class="form-control"
+        placeholder="Enter To-Do Title"
+        [(ngModel)]="newTitle"
+        >
+
+    </div> 
+     <div class="input-group">
+      <label >
+        <input type="checkbox"
+         
+        [(ngModel)]="newTodoCompleted"
+        >
+      Completed</label>
+
+    </div> 
+    <button (click)="addTodo()" class="btn btn-primary">Add Todo</button> -->
+    <div class="mt-4">
+      <h2>TO-DO List</h2>
+    <h3>Completed task</h3>
+  <ul class="list-group" *ngIf="Todos$ | async as Todos">
+    
+      <li *ngFor="let todo of Todos | filterCompleted : true " 
+        class="list-group-item f-flex justify-content-between align-items-center"
+      >
+        <div>
+          <input type="checkbox"
+          [checked]="todo.completed"
+          [disabled]="todo.completed"
+          (change)="toggleCompletion(todo)">
+           <span [class.text-decoration-line-through]="todo.completed">
+          {{todo.title | titlecase}}- created on {{todo.CreatedAt | date : 'fullDate'}}
+        </span>
+        </div>
+        <div>
+          <button [routerLink]="['/todo/edit-todo',todo.id]" class="btn btn-sm btn-warning ms-2">Edit</button>
+       <button class="btn btn-danger btn-sm" (click)="deletetodo(todo.id)">Delete</button>
+        </div>
+
+    </li>
+  </ul>
+
+      <h3>Incompleted Task</h3>
+      <ul class="list-group" *ngIf="Todos$ | async as Todos">
+     
+      <li *ngFor="let todo of Todos | filterCompleted : false " 
+        class="list-group-item f-flex justify-content-between align-items-center"
+      >
+        <div>
+          <input type="checkbox"
+          [checked]="todo.completed"
+           
+          (change)="toggleCompletion(todo)">
+           <span [class.text-decoration-line-through]="todo.completed">
+          {{todo.title | titlecase}}- created on {{todo.CreatedAt | date : 'fullDate'}}
+        </span>
+        </div>
+        <div>
+          <button [routerLink]="['/todo/edit-todo',todo.id]" class="btn btn-sm btn-warning ms-2">Edit</button>
+       <button class="btn btn-danger btn-sm" (click)="deletetodo(todo.id)">Delete</button>
+        </div>
+
+    </li>
+  </ul>
+  </div>
+  </div>
+
+ 

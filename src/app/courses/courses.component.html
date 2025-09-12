@@ -1,0 +1,6 @@
+ <div *ngFor="let course of courses" (click)="selecteddCourse(course)">
+  <ul>
+    <h2>{{course.name}}</h2>
+  </ul> </div>
+
+  <app-courslist [courseList]="selectedCourse"></app-courslist>

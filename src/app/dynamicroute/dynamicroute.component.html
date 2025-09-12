@@ -1,0 +1,15 @@
+ <!-- layout.component.html -->
+<div class="layout">
+  <aside class="sidebar">
+    <ul>
+      <h5>☰ Menu</h5>
+      <li *ngFor="let item of menu">
+        <a [routerLink]="item.path" routerLinkActive="active">{{ item.label }}</a>
+      </li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

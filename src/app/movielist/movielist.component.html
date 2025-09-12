@@ -1,0 +1,6 @@
+<br> <input class="form-control" [(ngModel)]="searchText" placeholder="Search movie">
+    <div *ngFor="let movie of pagedMovies">
+      {{ movie.name.first }}
+    </div>
+    <button class="btn btn-primary" (click)="prevPage()" [disabled]="page===0">Prev</button>
+    <button class="btn btn-primary" (click)="nextPage() ">Next</button>

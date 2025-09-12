@@ -1,0 +1,31 @@
+.is-invalid{
+    border: 1px solid red;
+
+    box-shadow: 0 0 12px #ff000021;
+}
+.form-group {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+input.form-control {
+  padding-right: 90px; /* space for the button */
+}
+.remove-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.remove-button:hover {
+  background-color: #c82333;
+}

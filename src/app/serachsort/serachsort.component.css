@@ -1,0 +1,26 @@
+.table th.sortable {
+  cursor: pointer;
+  position: relative;
+}
+
+.table th.sortable::after {
+  content: " ⬍";
+  font-size: 0.8rem;
+  color: #bbb;
+  margin-left: 4px;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f8f9fa;
+  transition: background-color 0.2s ease-in-out;
+}
+
+input.form-control {
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+}
+
+.btn {
+  border-radius: 0.5rem;
+  padding: 0.4rem 1.2rem;
+}

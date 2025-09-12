@@ -1,0 +1,18 @@
+ <div>
+  <h2>shopping cart</h2>
+  <app-cart-item *ngFor="let product of cart"  [product]="product" [message]="message" (remove)="removeProduct($event) ">
+      
+  </app-cart-item>
+     <p *ngIf="cart.length === 0">cart is empty</p>
+ </div>
+
+ <app-cart-item (notify)="raiseMessage($event)"></app-cart-item>
+<button (click)="onMessage()">change message</button>
+ <app-cart-item [(count)]="counter"></app-cart-item>
+
+ <app-cart-item  *ngFor="let user of users"
+ [name]="user.name" [email]="user.email" [role]="user.role"> 
+</app-cart-item>
+
+
+ 

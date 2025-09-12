@@ -1,0 +1,11 @@
+ <h3>Structural Directive</h3>
+ <div>
+  <button (click)="toggleLoginStatus()">
+    {{isLoggedIn ? 'Logout' : 'Login'}}
+  </button>
+    <p *ngIf="isLoggedIn ; else logouttemplate">Welcome back User!</p>
+ </div>
+ <!-- define ng template for else condition  -->
+  <ng-template #logouttemplate>
+    <p>please log in</p>
+  </ng-template>

@@ -1,0 +1,14 @@
+.btn-complte{
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 5px ,10 px;
+  cursor: pointer;
+}
+.btn-incomplte{
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px ,10 px;
+  cursor: pointer;
+}

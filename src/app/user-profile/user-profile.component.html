@@ -1,0 +1,34 @@
+ <h3>Data Binding</h3>
+ <h5>String interpolation</h5>
+<p>hello : {{welcomeUSer}}</p>
+<h5>Property binding</h5>
+<img [src]="ImageUrl" alt="">
+<h3>bind data using both interpolation and property binding</h3>
+<h5>Event binding</h5>
+<div [innerHTML]="Description"></div>
+
+<button [disabled]="isDisable" (click)="sayHello()">submit</button><br>
+<h5>Two Way data binding </h5>
+<input type="text" [(ngModel)]="userName">
+<p>user : {{userName}}</p>
+
+<div>
+  <button (click)="loggedIn()"  [ngStyle]="getColor(isloggedIn)">{{isloggedIn ? 'logout': 'Login'}}</button>
+  <p *ngIf="isloggedIn ;else logout">
+    welcome Back User !
+  </p>
+  <ng-template #logout>
+    please log in
+  </ng-template>
+</div>
+
+<div>
+  <button (click)="printFile()" class="btn btn-primary">Print File</button>
+</div>
+
+<div class="container" *ngFor="let post of posts">
+
+  <h4>{{post.title}}</h4>
+  <p [ngStyle]="getColor(post.completed)">{{post.completed}}</p>
+
+</div>

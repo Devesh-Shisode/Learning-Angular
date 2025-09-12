@@ -1,0 +1,90 @@
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+  <div class="card shadow-lg" style="width: 28rem;">
+    <div class="card-header text-center bg-danger text-white">
+      <h4>Practice Form</h4>
+    </div>
+
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #practiceForm="ngForm">
+
+         
+        <div class="mb-3">
+          <label for="name" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="name"
+                 name="name" [(ngModel)]="formData.name" #name="ngModel" required>
+                 <div *ngIf="name.touched && name.invalid"  class="text-danger"> 
+             <span><p>name is required *</p></span>
+          </div>
+        </div>
+        
+
+         
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email"
+                 name="email" [(ngModel)]="formData.email" required>
+        </div>
+
+        
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password"
+                 name="password" [(ngModel)]="formData.password" required>
+        </div>
+
+         
+        <div class="mb-3">
+          <label class="form-label d-block">Gender</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio"
+                   name="gender" value="Male"
+                   [(ngModel)]="formData.gender" required>
+            <label class="form-check-label">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio"
+                   name="gender" value="Female"
+                   [(ngModel)]="formData.gender">
+            <label class="form-check-label">Female</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio"
+                   name="gender" value="Other"
+                   [(ngModel)]="formData.gender">
+            <label class="form-check-label">Other</label>
+          </div>
+        </div>
+
+        <!-- Dropdown (Select) -->
+        <div class="mb-3">
+          <label for="role" class="form-label">Role</label>
+          <select class="form-select" id="role"
+                  name="role" [(ngModel)]="formData.role" required>
+            <option value="" disabled selected>Select role</option>
+            <option value="Student">Student</option>
+            <option value="Developer">Developer</option>
+            <option value="Designer">Designer</option>
+          </select>
+        </div>
+
+        
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input"
+                 id="terms" name="terms"
+                 [(ngModel)]="formData.terms" required>
+          <label class="form-check-label" for="terms">
+            I agree to terms & conditions
+          </label>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary w-100"
+                [disabled]="!practiceForm.valid">Submit</button>
+      </form>
+    </div>
+
+    <div class="card-footer text-center text-muted">
+      For practice only
+    </div>
+  </div>
+</div>

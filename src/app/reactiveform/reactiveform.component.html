@@ -1,0 +1,106 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-left rounded shadow py-5">
+        <h2 >Registration Form (Reactive Form)</h2>
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+          <label for="name" class="form-label">Name</label>
+          <input type="text"
+                 id="name"
+                 formControlName="name"
+                 placeholder="Enter Your Name"
+                 class="form-control"
+                [ngClass]="{'is-invalid' : registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched}"
+          ><div class="text-danger" *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched">
+                Name is required.
+          </div>
+        </div>
+          <div class="form-group">
+          <label for="email" class="form-label">Email</label>
+          <input type="email"
+                 id="email"
+                 formControlName="email"
+                 placeholder="Enter Your email"
+                 class="form-control"
+                [ngClass]="{'is-invalid' : registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched}"
+          >
+        <div class="text-danger" *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched">
+                Email is required.
+          </div></div>
+          <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <input type="password"
+                 id="password"
+                 formControlName="password"
+                 placeholder="Enter Your password"
+                 class="form-control"
+                [ngClass]="{'is-invalid' : registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched}"
+          > 
+          <div *ngIf="password?.errors && (password?.touched || password?.dirty) ">
+            <div *ngIf="password?.errors?.['required']" class="text-danger">password is required</div>
+            <div *ngIf="password?.errors?.['minlength']" class="text-danger">
+                password must be {{password?.errors?.['minlength'].requiredLength}} characters. actual length is : {{password?.errors?.['minlength'].actualLength}}
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirmpassword" class="form-label">Confirm Password</label>
+          <input type="password"
+                 id="confirmpassword"
+                 formControlName="confirmpassword"
+                 placeholder="Enter Your confirm password"
+                 class="form-control"
+                [ngClass]="{'is-invalid' : registrationForm.get('confirmpassword')?.invalid && registrationForm.get('confirmpassword')?.touched}"
+          > 
+          <div *ngIf="confirmpassword?.errors && (confirmpassword?.touched || confirmpassword?.dirty) ">
+            <div *ngIf="confirmpassword?.errors?.['required']" class="text-danger">confirm password is required</div>
+            </div>
+            <div class="text-danger" *ngIf="registrationForm.hasError('passwordMismatch') && confirmpassword?.touched"> password does not match</div>
+        </div>
+        <div formGroupName="address">
+        <div class="form-group">
+          <label for="street" class="form-label">street</label>
+          <input type="text"
+                 id="street"
+                 formControlName="street"
+                 placeholder="Enter Your street name"
+                 class="form-control"
+                 >
+        </div>
+        <div class="form-group">
+          <label for="city" class="form-label">city</label>
+          <input type="text"
+                 id="city"
+                 formControlName="city"
+                 placeholder="Enter Your city name"
+                 class="form-control"
+                 >
+        </div>
+        <div class="form-group">
+          <label for="postalcode" class="form-label">postalcode</label>
+          <input type="text"
+                 id="postalcode"
+                 formControlName="postalcode"
+                 placeholder="Enter Your postalcode"
+                 class="form-control"
+                 >
+        </div>
+      </div>
+      <div formArrayName="skills">
+        <label>Skills</label>
+        <div class="form-group"  *ngFor="let skill of skills.controls ;let i =index">
+            <input type="text"
+                [formControlName]="i"
+                placeholder="Enter your skill"
+                class="form-control"
+            >
+            <button type="button"  class="remove-button" (click)="removeSkill(i)">Remove</button>
+        </div>
+          
+      </div>
+      <button class="btn btn-success" (click)="addSkill()">Add Skill</button>
+          <button type="submit" class="btn btn-primary">submit</button>
+        </form>
+      </div>
+    </div>
+</div>  

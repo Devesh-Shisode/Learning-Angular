@@ -1,0 +1,9 @@
+<div class="container mt-5 ">
+  <!-- Headings -->
+  <h2 *ngIf="!isLoggedIn()">Login</h2>
+  <h2 *ngIf="isLoggedIn()">Welcome! You are logged in</h2>
+
+  <!-- Buttons -->
+  <button *ngIf="!isLoggedIn()" (click)="login()" class="btn btn-primary">Login</button>
+  <button *ngIf="isLoggedIn()" (click)="logout()" class="btn btn-danger">Logout</button>
+</div>

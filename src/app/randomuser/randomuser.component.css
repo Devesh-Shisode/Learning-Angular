@@ -1,0 +1,17 @@
+.table-container {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+}
+
+.table-header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+}
+
+img {
+  width: 40px;
+  height: 40px;
+}
