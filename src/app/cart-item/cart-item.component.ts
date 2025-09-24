@@ -22,7 +22,7 @@ export class CartItemComponent implements OnInit,OnChanges {
 
   ngOnInit(): void {}
   onRemove() {
-    this.remove.emit(this.product); // emit the product biegn removed
+    this.remove.emit(this.product);  
   }
   onNotify() {
     this.notify.emit('hello child from child component');

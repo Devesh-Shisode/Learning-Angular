@@ -15,6 +15,7 @@ import { NgcontainerComponent } from './ngcontainer/ngcontainer.component';
 import { InputformComponent } from './inputform/inputform.component';
 import { DynamicrouteComponent } from './dynamicroute/dynamicroute.component';
 import { SerachsortComponent } from './serachsort/serachsort.component';
+import { IdRouteComponent } from './id-route/id-route.component';
 
 const routes: Routes = [
   { path: 'yahoofince', component: YahoofinaceComponent },
@@ -45,7 +46,8 @@ const routes: Routes = [
     children : [
         {path : '' ,redirectTo : 'dynamic', pathMatch : 'full'}
   ]},
-  {path : 'serachsort' , component : SerachsortComponent}
+  {path : 'serachsort' , component : SerachsortComponent},
+  {path : 'user/:id' , component : IdRouteComponent}
 ];
 
 @NgModule({

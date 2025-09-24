@@ -44,6 +44,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingComponent } from './setting/setting.component';
 import { DynamicRouteService } from './services/dynamic-route.service';
 import { SerachsortComponent } from './serachsort/serachsort.component';
+import { IdRouteComponent } from './id-route/id-route.component';
 
 export function initRoutes(dyn: DynamicRouteService) {
   return () => dyn.applyApiRoutes(); // returns Promise
@@ -82,6 +83,7 @@ export function initRoutes(dyn: DynamicRouteService) {
     DashboardComponent,
     SettingComponent,
     SerachsortComponent,
+    IdRouteComponent,
     
    
   ],
