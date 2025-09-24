@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+ 
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
  
@@ -16,6 +16,7 @@ import { InputformComponent } from './inputform/inputform.component';
 import { DynamicrouteComponent } from './dynamicroute/dynamicroute.component';
 import { SerachsortComponent } from './serachsort/serachsort.component';
 import { IdRouteComponent } from './id-route/id-route.component';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: 'yahoofince', component: YahoofinaceComponent },

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouteService } from '../services/route.service';
-import { ActivatedRoute } from '@angular/router';
+ 
 
 @Component({
   selector: 'app-id-route',
@@ -11,7 +11,7 @@ export class IdRouteComponent implements OnInit {
 
     users : any [] =[];
 
-  constructor(private idroute : RouteService , private route : ActivatedRoute) { }
+  constructor(private idroute : RouteService ) { }
 
   ngOnInit(): void {
     this.idroute
