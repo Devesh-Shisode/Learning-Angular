@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PostService } from '../services/post.service';
 import { Subscription } from 'rxjs';
-import { printLog } from '../models/decorator.decorator';
+ 
 
 @Component({
   selector: 'app-serachsort',
@@ -68,13 +68,6 @@ export class SerachsortComponent implements OnInit, OnDestroy {
     this.unsubscribe=this.subscription.unsubscribe();
     console.log("Unsubscribed------->",this.unsubscribe)
   }
-  number! : number 
-   @printLog
-  getRandomValue() {
-    console.log("method called");
-    
-    this.number =Math.random() * 10;
-    return Math.random() * 10;
-  }
+ 
 
 }
