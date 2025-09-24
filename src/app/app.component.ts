@@ -8,7 +8,7 @@ import { DynamicRouteService } from './services/dynamic-route.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
    title = 'practice'
    constructor(public auth: AuthService, private router: Router, private dyn: DynamicRouteService) {}
   async ngOnInit() {
