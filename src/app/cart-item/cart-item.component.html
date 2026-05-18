@@ -1,5 +1,5 @@
  <div *ngIf="product"  >
-  <div><p [appHover]="'blue'" [appHighlight]="'yellow'" style="width: 200px;">{{product.name}} - ${{product.price}}</p></div>
+  <div><p [appHover]='color' [appHighlight]="'yellow'" style="width: 200px;">{{product.name}} - ${{product.price}}</p></div>
  <button (click)="onRemove()">Remove</button>
 </div>  
 

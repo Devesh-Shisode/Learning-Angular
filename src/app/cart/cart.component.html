@@ -1,18 +1,115 @@
- <div>
+ 
+<div class="fixed-top p-3 d-flex justify-content-end">
+  <button
+    class="btn btn-primary position-relative"
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#cartSidebar"
+    aria-controls="cartSidebar"
+  >
+    🛒 Cart
+    <span
+      class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+      *ngIf="qty$ | async as qty"
+    >
+      {{ qty }}
+    </span>
+  </button>
+</div>
+
+ 
+<div
+  class="offcanvas offcanvas-end"
+  tabindex="-1"
+  id="cartSidebar"
+  aria-labelledby="cartSidebarLabel"
+>
+  <div class="offcanvas-header bg-primary text-white">
+    <h5 class="offcanvas-title" id="cartSidebarLabel">🛒 Your Cart</h5>
+    <button
+      type="button"
+      class="btn-close btn-close-white text-reset"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+
+  <div class="offcanvas-body p-0">
+    <!-- Cart Items -->
+    <div *ngIf="items$ | async as items; else emptyCart">
+      <ul class="list-group list-group-flush">
+        <li
+          *ngFor="let item of items"
+          class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+        >
+          <div class="d-flex align-items-center flex-grow-1">
+            <img
+              [src]="item.product.image"
+              alt="{{ item.product.title }}"
+              class="img-thumbnail me-3"
+              style="width: 60px; height: 60px; object-fit: contain"
+            />
+            <div>
+              <h6 class="mb-1">{{ item.product.title }}</h6>
+              <small class="text-muted">
+                ₹{{ item.product.price | number:'1.0-0' }}
+              </small>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mt-2 mt-md-0">
+            <input
+              type="number"
+              class="form-control form-control-sm me-2"
+              style="width: 70px"
+              [value]="item.qty"
+              (change)="onQty(item.product.id, $any($event.target).value)"
+            />
+            <button
+              class="btn btn-outline-danger btn-sm"
+              (click)="remove(item.product.id)"
+            >
+              ✖
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Empty Cart -->
+    <ng-template #emptyCart>
+      <div class="text-center py-5 text-muted">
+        🛍️ Your cart is empty.
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- Footer -->
+  <div class="offcanvas-footer p-3 border-top d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">
+      Total: 
+      <span class="text-success fw-bold">
+        ₹{{ ((total$ | async) ?? 0) | number:'1.0-0' }}
+      </span>
+    </h5>
+    <button
+      class="btn btn-success"
+      (click)="checkout()"
+      [disabled]="!(qty$ | async)"
+    >
+      Checkout →
+    </button>
+  </div>
+</div>
+
+ <!-- <div>
   <h2>shopping cart</h2>
   <app-cart-item *ngFor="let product of cart"  [product]="product" [message]="message" (remove)="removeProduct($event) ">
-      
   </app-cart-item>
      <p *ngIf="cart.length === 0">cart is empty</p>
  </div>
-
  <app-cart-item (notify)="raiseMessage($event)"></app-cart-item>
 <button (click)="onMessage()">change message</button>
  <app-cart-item [(count)]="counter"></app-cart-item>
-
  <app-cart-item  *ngFor="let user of users"
  [name]="user.name" [email]="user.email" [role]="user.role"> 
-</app-cart-item>
-
-
- 
+</app-cart-item> -->

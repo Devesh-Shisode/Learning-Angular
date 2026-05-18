@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
       this._router.navigate(['/todo'])
     }
         logout() {
-    this._auth.logout(); // Clear token
-    this._router.navigate(['/login']); // Redirect to login page
+    this._auth.logout(); 
+    this._router.navigate(['/login']); 
   }
 
       isLoggedIn(): boolean {

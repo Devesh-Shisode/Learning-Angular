@@ -1,0 +1,15 @@
+<div class="formula-editor">
+  <div class="editor-top">
+    <div class="tokens">
+      <button type="button" (click)="insertToken('IF(')">IF()</button>
+      <button type="button" (click)="insertToken('convert(')">convert()</button>
+      <button type="button" (click)="insertToken('CV[')">CV[]</button>
+      <button type="button" (click)="insertToken('FIELD[')">FIELD[]</button>
+    </div>
+    <button class="btn-eval" (click)="evaluate()">Evaluate</button>
+  </div>
+
+  <textarea [value]="value" (input)="onChange($event.target)" [disabled]="disabled" rows="8"></textarea>
+
+  <div class="editor-help">Tips: use IF(condition, trueValue, falseValue). Use convert(value, 'mg', 'ug') to convert units. Click tokens to insert quick snippets.</div>
+</div>

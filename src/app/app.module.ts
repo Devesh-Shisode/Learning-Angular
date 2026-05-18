@@ -1,9 +1,7 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
- 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { StructuralDirectiveComponent } from './structural-directive/structural-directive.component';
@@ -19,14 +17,12 @@ import { CoursesComponent } from './courses/courses.component';
 import { CourslistComponent } from './courslist/courslist.component';
 import { MyServiceService } from './services/my-service.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
- 
 import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 //import { FilterCompletedPipe } from './pipes/filter-completed.pipe';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
- 
 import { TodoModule } from './todo/todo.module';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
@@ -45,10 +41,35 @@ import { SettingComponent } from './setting/setting.component';
 import { DynamicRouteService } from './services/dynamic-route.service';
 import { SerachsortComponent } from './serachsort/serachsort.component';
 import { IdRouteComponent } from './id-route/id-route.component';
+import { cartReducer } from './store/cart/cart.reducer';
+import { productsReducer } from './store/products/products.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CartEffects } from './store/cart/cart.effects';
+import { ProductsEffects } from './store/products/products.effects';
+import { counterReducer } from './store/counter/counter.reducer';
+import { SetvalueComponent } from './setvalue/setvalue.component';
+import { CvSliderComponent } from './cv-slider/cv-slider.component';
+import { FormulaEditorComponent } from './formula-editor/formula-editor.component';
+
+const reducers = {
+  products: productsReducer,
+  cart: cartReducer
+};
 
 export function initRoutes(dyn: DynamicRouteService) {
-  return () => dyn.applyApiRoutes(); // returns Promise
+  return async () => {
+    try {
+      await dyn.applyApiRoutes();  
+    } catch (error) {
+      console.error('Failed to load dynamic routes:', error);
+      dyn.setInitError(true); 
+     
+    }
+  };
 }
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,8 +85,7 @@ export function initRoutes(dyn: DynamicRouteService) {
     HighlightDirective,
     CoursesComponent,
     CourslistComponent,
-   
-     //FilterCompletedPipe,
+    //FilterCompletedPipe,
     HomeComponent,
     AboutComponent,
     PagenotfoundComponent,
@@ -84,6 +104,9 @@ export function initRoutes(dyn: DynamicRouteService) {
     SettingComponent,
     SerachsortComponent,
     IdRouteComponent,
+    SetvalueComponent,
+    CvSliderComponent,
+    FormulaEditorComponent,
     
    
   ],
@@ -94,7 +117,12 @@ export function initRoutes(dyn: DynamicRouteService) {
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    
+    StoreModule.forRoot( {counter: counterReducer,
+                          products: productsReducer,
+                          cart: cartReducer}),
+
+    EffectsModule.forRoot( [ProductsEffects, CartEffects],),
+    StoreDevtoolsModule.instrument({ maxAge: 25 }),
     ToastrModule.forRoot({
        timeOut: 3000,
        positionClass: 'toast-top-right',
@@ -117,6 +145,5 @@ export class AppModule {
 
   constructor(){
     console.log('AppModule called');
-    
   }
 }

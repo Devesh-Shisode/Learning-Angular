@@ -12,7 +12,7 @@ export class CartItemComponent implements OnInit,OnChanges {
   @Input() count: number = 0;
   @Output() countChange = new EventEmitter<number>();
   @Input() message!: string;
-
+ @Input() color! : string;
   @Output() notify = new EventEmitter<string>();
     @Input() name!: string;
   @Input() email!: string;
@@ -34,7 +34,7 @@ export class CartItemComponent implements OnInit,OnChanges {
   }
 
    ngOnChanges(changes : SimpleChanges){
-      console.log(changes);
+      console.log("changes",changes);
   }
 
  

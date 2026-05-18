@@ -1,0 +1,67 @@
+<!-- Simple right-drawer slider - adapt to your design system -->
+<div class="cv-slider" [class.open]="visible">
+  <div class="cv-slider__header">
+    <h3>Create Calculated Variable</h3>
+    <button (click)="close()">Close</button>
+  </div>
+
+  <form [formGroup]="cvForm" class="cv-form">
+    <div class="form-row">
+      <label>CV ID</label>
+      <input formControlName="id" readonly />
+    </div>
+
+    <div class="form-row">
+      <label>Name *</label>
+      <input formControlName="name" />
+      <div *ngIf="cvForm.get('name')?.errors?.['required']">Name is required</div>
+      <div *ngIf="cvForm.get('name')?.errors?.['nameTaken']">Calculated Variable Name already exists</div>
+    </div>
+
+    <div class="form-row">
+      <label>Unit *</label>
+      <select formControlName="unit">
+        <option [ngValue]="null">-- Select --</option>
+        <option *ngFor="let u of units" [value]="u.code">{{ u.displayName }}</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label>Formula *</label>
+      <app-formula-editor formControlName="formula"></app-formula-editor>
+      <div *ngIf="cvForm.get('formula')?.errors?.['required']">Formula is required</div>
+    </div>
+
+    <div class="form-row">
+      <label>Description</label>
+      <textarea formControlName="description"></textarea>
+    </div>
+
+    <div class="form-row">
+      <label>Business Unit *</label>
+      <input formControlName="bu" />
+    </div>
+
+    <div class="form-row">
+      <label>MTV Code</label>
+      <select formControlName="mtvCode">
+        <option [ngValue]="null">-- Select --</option>
+        <option *ngFor="let m of mtvCodes" [value]="m.code">{{ m.displayName }}</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label>Copy CV</label>
+      <input type="checkbox" formControlName="copyCV" />
+      <select formControlName="existingCVId" [disabled]="!cvForm.get('copyCV')?.value">
+        <option [ngValue]="null">-- Select --</option>
+        <option *ngFor="let cv of existingCVs" [value]="cv.id">{{ cv.name }} ({{ cv.id }})</option>
+      </select>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" (click)="validateThenSave()" [disabled]="saving">Save</button>
+      <button type="button" (click)="close()">Cancel</button>
+    </div>
+  </form>
+</div>

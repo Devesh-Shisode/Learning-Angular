@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-setting',
@@ -6,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./setting.component.css']
 })
 export class SettingComponent implements OnInit {
-
-  constructor() { }
-
+  counter$ = this.counterSrv.counter$
+  constructor(private counterSrv : ProductsService) { }
+  
   ngOnInit(): void {
   }
 

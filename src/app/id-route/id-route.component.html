@@ -1,1 +1,19 @@
-<p>id-route works!</p>
+ <div class="row pt-2">
+      <div class="col-4">
+        <p>{{coursename()}}</p>
+          <button class="btn btn-outline-primary" (click)="changeCourseName()">changecourse</button>
+      </div>
+      <div class="col-4">
+            <p>{{citylist()}}</p>
+            <button class="btn btn-primary" (click)="changeArray()">citylist</button>
+      </div>
+      <div class="col-4">
+            <h4>{{citylist()}}</h4>
+          <input type="text"class="form-control" [(ngModel)]="citychanged">
+          <button class="btn btn-success btn-sm" (click)="changeArray()">Add</button>       
+      </div>
+      <div class="col-4 star">
+          <li>{{line}}</li>
+          <button class="btn btn-primary btn-sm">pattern</button>
+      </div>
+ </div>

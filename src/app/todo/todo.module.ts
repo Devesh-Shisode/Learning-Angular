@@ -26,7 +26,8 @@ import { TodoRoutingModule } from "./todo-routing.module";
     TodoRoutingModule
     
   ],
-  providers : []
+  providers : [],
+
 })
 
 export class TodoModule{

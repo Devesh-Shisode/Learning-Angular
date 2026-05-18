@@ -59,7 +59,9 @@ export class ReactiveformComponent implements OnInit {
 }
 
   passwordMatchValidator (group : AbstractControl): ValidationErrors | null
-{
+{ 
+      console.log(group);
+      
     const password=group.get('password')?.value
     const confirmpassword =group.get('confirmpassword')?.value
   return  password===confirmpassword ? null : {passwordMismatch : true}

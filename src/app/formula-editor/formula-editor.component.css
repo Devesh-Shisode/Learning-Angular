@@ -1,0 +1,19 @@
+.formula-editor {
+  .editor-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    .tokens button {
+      margin-right: 6px;
+    }
+  }
+  textarea {
+    width: 100%;
+    font-family: monospace;
+  }
+  .editor-help {
+    font-size: 12px;
+    color: #666;
+    margin-top: 6px;
+  }
+}

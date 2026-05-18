@@ -24,3 +24,4 @@ input.form-control {
   border-radius: 0.5rem;
   padding: 0.4rem 1.2rem;
 }
+.selected { background-color: yellow; width: 100px; }

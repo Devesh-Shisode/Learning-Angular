@@ -18,6 +18,10 @@ export class SerachsortComponent implements OnInit, OnDestroy {
   itemsPerPage = 10;
   unsubscribe : any
 
+    users = [{name: 'Bhanu'}, {name: 'Devesh'}];
+  selectedUser: any;
+
+ 
   constructor(private postService: PostService) {}
 
   ngOnInit(): void {
@@ -38,7 +42,7 @@ export class SerachsortComponent implements OnInit, OnDestroy {
       );
     });
   }
-
+   selectUser(user: any) { this.selectedUser = user; }
   onSearch(term: string) {
      this.postService.setSearchTerm(term.trim());
   }

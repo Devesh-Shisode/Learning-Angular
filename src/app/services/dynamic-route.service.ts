@@ -2,16 +2,22 @@
 import { Injectable } from '@angular/core';
 import { Router, Routes } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
-import { MenuService, ApiMenuItem } from './menu.service';
+import { MenuService, } from './menu.service';
 import { COMPONENT_MAP } from '../models/component-map';
 import { DynamicrouteComponent } from '../dynamicroute/dynamicroute.component';
 
 @Injectable({ providedIn: 'root' })
 export class DynamicRouteService {
+   private hasError = false;
   constructor(private router: Router, private menu: MenuService) {
     console.log(this.router);
   }
-    
+    setInitError(value: boolean) {
+    this.hasError = value;
+  }
+     getInitError(): boolean {
+    return this.hasError;
+  }
     
   async applyApiRoutes() {
     const items = await firstValueFrom(this.menu.getMenu());

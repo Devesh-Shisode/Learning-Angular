@@ -1,0 +1,45 @@
+.cv-slider {
+  position: fixed;
+  right: -720px;
+  top: 0;
+  height: 100vh;
+  width: 720px;
+  background: #fff;
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.12);
+  transition: right 240ms ease;
+  overflow: auto;
+  z-index: 1000;
+  &.open {
+    right: 0;
+  }
+  .cv-slider__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+  }
+  .cv-form {
+    padding: 16px;
+    .form-row {
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      label {
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+      input,
+      select,
+      textarea {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+    }
+    .form-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+    }
+  }
+}

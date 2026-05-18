@@ -1,4 +1,4 @@
-<p>productlist works!</p>
+<!-- <p>productlist works!</p>
 
 <div>
   <h2>Productlist using ngFor</h2>
@@ -12,7 +12,7 @@
     </ul>
   <app-productdetails [product]="selectedProducts"></app-productdetails>
     
-</div>
+</div> -->
 <!-- 
 <div>
     <h2>Using ngSwitch</h2>
@@ -43,3 +43,70 @@
     </li>
   </ul>
 </div> -->
+
+<div class="container my-4">
+  <!-- Reload Button -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">🛍️ Products</h2>
+    <button class="btn btn-primary" (click)="reload()">Reload</button>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="loading$ | async" class="d-flex align-items-center mb-3">
+    <div class="spinner-border text-primary me-2" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <span>Loading products...</span>
+  </div>
+
+  <!-- Product Grid -->
+  <div class="row" *ngIf="products$ | async as products">
+    <div
+      class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4"
+      *ngFor="let p of products"
+    >
+      <div class="card h-100 shadow-sm">
+        <!-- Image -->
+        <img
+          [src]="p.image"
+          [alt]="p.title"
+          class="card-img-top img-fluid"
+          style="height: 200px; object-fit: contain"
+        />
+
+        <!-- Card Body -->
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title text-truncate">{{ p.title }}</h5>
+          <p class="card-text text-muted small mb-2">
+            {{ p.category }}
+          </p>
+          <p class="fw-bold text-success">
+            ₹{{ p.price | number: '1.0-0' }}
+          </p>
+
+          <div class="mt-auto">
+            <button
+              class="btn btn-success w-100"
+              (click)="add(p.id.toString())"
+            >
+              ➕ Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div
+    *ngIf="(products$ | async)?.length === 0 && !(loading$ | async)"
+    class="text-center py-5 text-muted"
+  >
+    No products available.
+  </div>
+</div>
+
+<div class="fixed-top">
+  <app-cart></app-cart>
+</div>
+ 

@@ -21,7 +21,5 @@ export class TdfComponent implements OnInit {
     if(form.valid){
       console.log(form.value);
     }
-    
-    
   }
 }
