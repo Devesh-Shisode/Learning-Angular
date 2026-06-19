@@ -13,6 +13,6 @@ export interface ApiMenuItem {
 export class MenuService {
   constructor(private http: HttpClient) {}
   getMenu(): Observable<ApiMenuItem[]> {
-    return this.http.get<ApiMenuItem[]>('http://localhost:3000/menu');
+    return this.http.get<ApiMenuItem[]>('http://localhost:4000/menu');
   }
 }

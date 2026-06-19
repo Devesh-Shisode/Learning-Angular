@@ -9,7 +9,7 @@ import { Todo } from '../models/todos';
 export class TodoService {
 
   constructor(private _http :HttpClient) { }
-    apiURL ='http://localhost:3000/todos'
+    apiURL ='http://localhost:4000/todos'
     apiUrl2 ='https://jsonplaceholder.typicode.com/posts'
 
      getPosts(): Observable<any[]> {
